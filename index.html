@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Raum3 — Arbeiten. Wachsen. Gestalten. | Bergisch Gladbach</title>
+<meta name="description" content="Raum3 ist ein Raum der Möglichkeiten in Bergisch Gladbach: Coworking, Kurs- und Seminarräume sowie kreative Formate. Eröffnung 11. September 2026 — sei von Anfang an dabei." />
+
+<link href="assets/fonts/fonts.css" rel="stylesheet">
+
+<style>
+  :root{
+    --weiss:#ffffff;
+    --apricot:#E8B7A5;
+    --rosa:#FFE9E0;
+    --orange:#ED633D;
+    --orange-dark:#d8512c;
+    --tinte:#2B2422;       /* warmes Dunkelbraun statt Schwarz */
+    --tinte-soft:#6a5d57;
+
+    --display:"Bricolage Grotesque", system-ui, sans-serif;
+    --body:"Hanken Grotesk", system-ui, sans-serif;
+    --script:"Sacramento", cursive;
+
+    --maxw:1180px;
+    --pad:clamp(1.25rem, 5vw, 4rem);
+    --radius:18px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--body);
+    color:var(--tinte);
+    background:var(--weiss);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+
+  /* ---------- Wortmarke ---------- */
+  .wordmark{font-family:var(--display);font-weight:800;letter-spacing:-.01em;line-height:1;display:inline-flex;align-items:flex-start}
+  .wordmark .raum{color:var(--orange);text-transform:uppercase}
+  .wordmark .drei{font-family:var(--script);font-weight:400;color:var(--apricot);margin-left:.12em;transform:translateY(-.05em);letter-spacing:0}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(43,36,34,.07);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .nav .wordmark{font-size:1.9rem}
+  .nav .drei{font-size:1.7rem}
+  .nav-cta{
+    font-family:var(--body);font-weight:600;font-size:.95rem;
+    color:var(--orange);border:1.5px solid var(--orange);
+    padding:.5rem 1.15rem;border-radius:100px;transition:.25s;
+  }
+  .nav-cta:hover{background:var(--orange);color:#fff}
+
+  /* ---------- Hero ---------- */
+  .hero{padding-top:clamp(3rem,7vw,6rem);padding-bottom:clamp(3rem,6vw,5rem)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:.55rem;
+    font-weight:600;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--orange);margin-bottom:1.5rem;
+  }
+  .eyebrow::before{content:"";width:34px;height:1.5px;background:var(--orange)}
+  .hero h1{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(2.5rem,6.2vw,4.6rem);line-height:1.02;letter-spacing:-.025em;
+    margin-bottom:1.4rem;
+  }
+  .hero h1 .soft{color:var(--apricot)}
+  .hero p.lead{font-size:1.12rem;color:var(--tinte-soft);max-width:34ch;margin-bottom:2rem}
+  .claim{font-family:var(--display);font-weight:700;font-size:1.35rem;letter-spacing:-.01em;margin-bottom:2.2rem}
+  .claim span:nth-child(1){color:var(--orange)}
+  .claim span:nth-child(2){color:var(--apricot)}
+  .claim span:nth-child(3){color:var(--tinte)}
+  .btn{
+    display:inline-flex;align-items:center;gap:.6rem;
+    background:var(--orange);color:#fff;font-weight:600;
+    padding:.95rem 1.8rem;border-radius:100px;font-size:1rem;
+    transition:.25s;border:none;cursor:pointer;
+  }
+  .btn:hover{background:var(--orange-dark);transform:translateY(-2px)}
+  .btn .arr{transition:.25s}
+  .btn:hover .arr{transform:translateX(4px)}
+  .hero-media{position:relative}
+  .hero-media img{border-radius:var(--radius);box-shadow:0 30px 60px -30px rgba(43,36,34,.45);aspect-ratio:4/3.4;object-fit:cover}
+  .hero-badge{
+    position:absolute;bottom:-22px;left:-22px;
+    background:var(--apricot);color:var(--tinte);
+    border-radius:14px;padding:.85rem 1.2rem;font-weight:600;line-height:1.15;
+    box-shadow:0 14px 30px -14px rgba(43,36,34,.4);
+  }
+  .hero-badge b{display:block;font-family:var(--display);font-size:1.15rem}
+  .hero-badge small{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+
+  /* ---------- Section base ---------- */
+  .section{padding-block:clamp(3.5rem,8vw,7rem)}
+  .section-head{max-width:46ch;margin-bottom:3rem}
+  .kicker{font-family:var(--script);font-size:2rem;color:var(--orange);line-height:1;display:block;margin-bottom:.2rem}
+  .section-head h2{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4vw,2.9rem);letter-spacing:-.02em;line-height:1.08}
+  .section-head p{color:var(--tinte-soft);margin-top:1rem;font-size:1.08rem}
+
+  /* ---------- Bereiche ---------- */
+  .bereiche{background:var(--rosa)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+  .card{
+    background:#fff;border-radius:var(--radius);padding:2rem 1.8rem;
+    display:flex;flex-direction:column;border:1px solid rgba(43,36,34,.05);
+    transition:.3s;
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:0 24px 50px -30px rgba(43,36,34,.4)}
+  .card .tag{font-family:var(--script);font-size:1.7rem;color:var(--apricot);line-height:1}
+  .card h3{font-family:var(--display);font-weight:700;font-size:1.6rem;letter-spacing:-.01em;margin:.1rem 0 .9rem}
+  .card p{color:var(--tinte-soft);font-size:.98rem;flex:1}
+  .card .preis{
+    margin-top:1.6rem;padding-top:1.1rem;border-top:1px solid rgba(43,36,34,.1);
+    font-weight:600;color:var(--tinte);
+  }
+  .card .preis b{font-family:var(--display);color:var(--orange);font-size:1.25rem}
+
+  /* ---------- Was ist raum3 ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
+  .about-text h2{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,3.8vw,2.7rem);letter-spacing:-.02em;line-height:1.1;margin-bottom:1.3rem}
+  .about-text h2 em{font-style:normal;color:var(--orange)}
+  .about-text p{color:var(--tinte-soft);font-size:1.08rem;margin-bottom:1rem}
+  .about-media img{border-radius:var(--radius);box-shadow:0 24px 50px -30px rgba(43,36,34,.4);aspect-ratio:4/3;object-fit:cover}
+
+  /* ---------- Räume ---------- */
+  .raeume{background:var(--apricot)}
+  .raeume .section-head h2,.raeume .kicker{color:var(--tinte)}
+  .raeume .kicker{color:#fff}
+  .raeume .section-head p{color:rgba(43,36,34,.7)}
+  .gallery{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+  .gallery figure{border-radius:var(--radius);overflow:hidden;background:#fff;box-shadow:0 20px 44px -28px rgba(43,36,34,.5)}
+  .gallery img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
+  .gallery .plan img{object-fit:contain;background:var(--apricot);aspect-ratio:auto}
+  .gallery figcaption{padding:.85rem 1.1rem;font-weight:600;font-size:.95rem;background:#fff}
+  .gallery figcaption span{color:var(--tinte-soft);font-weight:400;display:block;font-size:.85rem}
+
+  /* ---------- Initiatorinnen ---------- */
+  .team{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:760px}
+  .person{display:flex;gap:1.3rem;align-items:center}
+  .person img,.person .ph{width:104px;height:104px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--rosa)}
+  .person .ph{display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:1.8rem;color:var(--apricot)}
+  .person h3{font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1.1}
+  .person p{color:var(--tinte-soft);font-size:.95rem;margin-top:.2rem}
+
+  /* ---------- Kontakt ---------- */
+  .kontakt{background:var(--tinte);color:#fff}
+  .kontakt .kicker{color:var(--apricot)}
+  .kontakt .section-head h2{color:#fff}
+  .kontakt .section-head p{color:rgba(255,255,255,.7)}
+  .kontakt-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,4rem)}
+  .kontakt-info p{color:rgba(255,255,255,.75);margin-bottom:1.4rem}
+  .kontakt-info .line{display:flex;gap:.7rem;align-items:flex-start;margin-bottom:.9rem;color:#fff}
+  .kontakt-info .line b{color:var(--apricot);font-weight:600}
+  .kontakt-card{
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+    border-radius:var(--radius);padding:clamp(1.6rem,3vw,2.4rem);
+    display:flex;flex-direction:column;align-items:flex-start;justify-content:center;height:100%;
+  }
+  .kontakt-card h3{font-family:var(--display);font-weight:700;font-size:1.6rem;letter-spacing:-.01em;margin-bottom:.7rem}
+  .kontakt-card p{color:rgba(255,255,255,.78);margin-bottom:1.6rem}
+  .kontakt-card p b{color:var(--apricot);font-weight:600}
+  .kontakt-alt{font-size:.9rem;color:rgba(255,255,255,.55);margin:1.2rem 0 0}
+  .kontakt-alt a{color:var(--apricot)}
+
+  /* ---------- Footer ---------- */
+  footer{background:#1f1916;color:rgba(255,255,255,.7);padding-block:3rem}
+  .foot-grid{display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:flex-start}
+  .foot-logo{height:46px;width:auto}
+  .foot-addr{font-size:.95rem;line-height:1.7}
+  .foot-links{display:flex;gap:1.5rem;font-size:.92rem}
+  .foot-links a{transition:.2s}
+  .foot-links a:hover{color:var(--orange)}
+  .foot-bottom{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1);font-size:.82rem;color:rgba(255,255,255,.4);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+
+  /* ---------- Reveal-Animation ---------- */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- Mobile ---------- */
+  @media (max-width:900px){
+    .hero-grid,.about-grid,.kontakt-grid{grid-template-columns:1fr}
+    .hero-media{order:-1}
+    .hero p.lead{max-width:none}
+    .cards{grid-template-columns:1fr}
+    .team{grid-template-columns:1fr}
+    .gallery{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    .nav-cta{display:none}
+    .hero-badge{left:0}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#top" class="wordmark" aria-label="Raum3 – Startseite">
+      <span class="raum">raum</span><span class="drei">drei</span>
+    </a>
+    <a href="#interesse" class="nav-cta">Interesse anmelden</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Bald in Bergisch Gladbach</span>
+        <h1>Es entsteht ein <span class="soft">neuer Ort</span> in Bensberg.</h1>
+        <p class="lead">Ein Ort, der Arbeiten, Wachsen und Gestalten miteinander verbindet — ein Raum der Möglichkeiten für alle, die gemeinsam etwas bewegen wollen.</p>
+        <div class="claim"><span>Arbeiten.</span> <span>Wachsen.</span> <span>Gestalten.</span></div>
+        <a href="#interesse" class="btn">Von Anfang an dabei sein <span class="arr">→</span></a>
+      </div>
+      <div class="hero-media">
+        <img src="assets/img/raum-mittlere-ebene.jpg" alt="Heller, offener Raum mit großer Fensterfront, Holzboden und Galerie-Ebene" />
+        <div class="hero-badge"><small>Eröffnung</small><b>11. September 2026</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIE DREI BEREICHE -->
+  <section class="section bereiche reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">drei Bereiche, ein Ort</span>
+        <h2>Wofür hier Raum ist.</h2>
+        <p>Raum3 ist mehr als ein Coworking Space, mehr als ein Kursraum, mehr als eine Werkstatt. Such dir aus, was zu dir passt.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <span class="tag">eins</span>
+          <h3>Arbeiten</h3>
+          <p>Selbstständige, Start-ups, Remote Worker und Unternehmen aus der Region finden hier einen inspirierenden Raum für Coworking. Neben Arbeitsplätzen und Meetingräumen entstehen neue Netzwerke, Kooperationen und Ideen. Raum3 bietet mehr als Schreibtische — er schafft Verbindung.</p>
+          <div class="preis">ab <b>25&nbsp;€</b> / Tag</div>
+        </article>
+        <article class="card">
+          <span class="tag">zwei</span>
+          <h3>Wachsen</h3>
+          <p>Trainer:innen, Coaches und Berater:innen finden hier Räume für Entwicklung und Wachstum. Gerade in Zeiten des Wandels wächst das Bedürfnis nach Resilienz, Selbstführung und Sinn. Raum3 schafft den Rahmen — für Coachings, Retreats, Yoga oder Fortbildungen, die Menschen stärken und verbinden.</p>
+          <div class="preis">ab <b>20&nbsp;€</b> / Stunde</div>
+        </article>
+        <article class="card">
+          <span class="tag">drei</span>
+          <h3>Gestalten</h3>
+          <p>Raum3 lädt ein zum kreativen Tun, Ausprobieren und Teilen. Wer Ideen und Kreativität einbringen möchte, findet hier Platz für offene Ateliers, Workshops sowie künstlerische und handwerkliche Formate. Kreativität macht Raum3 lebendig und verbindet.</p>
+          <div class="preis">ab <b>25&nbsp;€</b> / Stunde</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAS IST RAUM3 -->
+  <section class="section wrap reveal">
+    <div class="about-grid">
+      <div class="about-text">
+        <h2>Raum3 ist ein <em>Raum der Möglichkeiten</em>.</h2>
+        <p>Ein modularer Ort zum Arbeiten, Wachsen und Gestalten. Raum3 verbindet Coworking, Kurs- und Seminarräume sowie kreative Formate zu einem lokalen Arbeits-, Lern- und Begegnungsort.</p>
+        <p>Mit Community-Fokus — für alle, die gemeinsam arbeiten, lernen, wachsen und gestalten wollen.</p>
+      </div>
+      <div class="about-media">
+        <img src="assets/img/raum-galerie.jpg" alt="Blick von der Galerie auf den hellen Hauptraum mit Holzboden und Spots" />
+      </div>
+    </div>
+  </section>
+
+  <!-- DIE RÄUME -->
+  <section class="section raeume reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">die Räume</span>
+        <h2>Über zwei Ebenen gedacht.</h2>
+        <p>Vom Coworking über Kurse bis Yoga: Die Flächen lassen sich flexibel für ganz unterschiedliche Formate nutzen.</p>
+      </div>
+      <div class="gallery">
+        <figure>
+          <img src="assets/img/raum-mittlere-ebene.jpg" alt="Mittlere Ebene mit Fensterfront und Treppe zur Galerie" />
+          <figcaption>Mittlere Ebene<span>Offene Arbeits- und Begegnungsfläche</span></figcaption>
+        </figure>
+        <figure>
+          <img src="assets/img/raum-galerie.jpg" alt="Blick von der Galerie-Ebene nach unten" />
+          <figcaption>Galerie-Ebene<span>Rückzug, Meetings & Coaching</span></figcaption>
+        </figure>
+        <figure class="plan">
+          <img src="assets/img/grundriss-eg.png" alt="Grundriss Erdgeschoss: Coworking Flex Desk, Kurse, Vortrag, Yoga" loading="lazy" />
+          <figcaption>Erdgeschoss<span>Coworking Flex Desk · Kurse · Vortrag · Yoga</span></figcaption>
+        </figure>
+        <figure class="plan">
+          <img src="assets/img/grundriss-og.png" alt="Grundriss Obergeschoss" loading="lazy" />
+          <figcaption>Obergeschoss<span>Coworking Fix Desk · Meeting · Coaching</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- INITIATORINNEN -->
+  <section class="section wrap reveal">
+    <div class="section-head">
+      <span class="kicker">die Initiatorinnen</span>
+      <h2>Zwei, die diesen Raum möglich machen.</h2>
+    </div>
+    <div class="team">
+      <div class="person">
+        <img src="assets/img/gwen.jpg" alt="Gwendolyn Rothstein" />
+        <div>
+          <h3>Gwendolyn Rothstein</h3>
+          <p>Kursleiterin für Kinder &amp; Erwachsene — kreative Kurse, Kräuterpädagogik, Meditation &amp; innere Balance.</p>
+        </div>
+      </div>
+      <div class="person">
+        <div class="ph" aria-hidden="true">CH</div>
+        <div>
+          <h3>Cora Hanquet</h3>
+          <p>Gestalterin für Arbeits- und Möglichkeitsräume, systemische Beraterin.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="section kontakt reveal" id="interesse">
+    <div class="wrap">
+      <div class="kontakt-grid">
+        <div class="kontakt-info">
+          <span class="kicker">sei dabei</span>
+          <div class="section-head" style="margin-bottom:1.6rem">
+            <h2>Interesse anmelden.</h2>
+          </div>
+          <p>Du möchtest von Anfang an dabei sein? Melde dich mit einer kurzen Nachricht — wir freuen uns, dich kennenzulernen.</p>
+          <div class="line"><b>Ort</b><span>Nikolausstraße 3–5<br>51429 Bergisch Gladbach</span></div>
+          <div class="line"><b>Mail</b><span>hallo@raum3-bensberg.de</span></div>
+          <div class="line"><b>Start</b><span>11. September 2026</span></div>
+        </div>
+
+        <!-- Kein Formular nötig: direkter E-Mail-Kontakt (statisch, kein Backend, DSGVO-sparsam).
+             mailto öffnet das Mailprogramm der Besucher:in mit vorausgefüllter Vorlage. -->
+        <div class="kontakt-card">
+          <h3>Schreib uns direkt</h3>
+          <p>Sag uns kurz, wer du bist und was dich interessiert — <b>Arbeiten</b>, <b>Wachsen</b> oder <b>Gestalten</b>. Wir melden uns bei dir, sobald es losgeht.</p>
+          <a class="btn" href="mailto:hallo@raum3-bensberg.de?subject=Interesse%20an%20Raum3&body=Hallo%20Cora%20und%20Gwen%2C%0D%0A%0D%0Aich%20interessiere%20mich%20f%C3%BCr%20Raum3.%0D%0A%0D%0AName%3A%0D%0AInteresse%20(Arbeiten%20%2F%20Wachsen%20%2F%20Gestalten)%3A%0D%0AMeine%20Nachricht%3A%0D%0A%0D%0AViele%20Gr%C3%BC%C3%9Fe">
+            Interesse per E-Mail senden <span class="arr">→</span>
+          </a>
+          <p class="kontakt-alt">Oder direkt an <a href="mailto:hallo@raum3-bensberg.de">hallo@raum3-bensberg.de</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img src="assets/logo/logo-weiss-crop.png" alt="Raum3 – Raum der Möglichkeiten" class="foot-logo" />
+        <p class="foot-addr" style="margin-top:1rem">
+          Raum3 — Cora Hanquet &amp; Gwendolyn Rothstein GbR i.&nbsp;G.<br>
+          Nikolausstraße 3–5, 51429 Bergisch Gladbach<br>
+          hallo@raum3-bensberg.de
+        </p>
+      </div>
+      <nav class="foot-links" aria-label="Rechtliches">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="#interesse">Interesse anmelden</a>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Raum3 — Raum der Möglichkeiten</span>
+      <span>Arbeiten. Wachsen. Gestalten.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sanfte Scroll-Reveals
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

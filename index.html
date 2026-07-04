@@ -3,19 +3,24 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Raum3 — Arbeiten. Wachsen. Gestalten. | Bergisch Gladbach</title>
-<meta name="description" content="Raum3 ist ein Raum der Möglichkeiten in Bergisch Gladbach: Coworking, Kurs- und Seminarräume sowie kreative Formate. Eröffnung 11. September 2026 — sei von Anfang an dabei." />
+<title>Raum3 — Ein Raum der Möglichkeiten | Bensberg, Bergisch Gladbach</title>
+<meta name="description" content="Raum3 in Bensberg: Coworking, multifunktionale Ebene für Workshops & Yoga sowie Coaching- und Meetingraum. Eröffnung 11. September 2026 — sei von Anfang an dabei." />
 
 <link href="assets/fonts/fonts.css" rel="stylesheet">
 
 <style>
   :root{
     --weiss:#ffffff;
-    --apricot:#E8B7A5;
-    --rosa:#FFE9E0;
-    --orange:#ED633D;
-    --orange-dark:#d8512c;
-    --tinte:#2B2422;       /* warmes Dunkelbraun statt Schwarz */
+    --rosa:#FFE9E0;        /* Flächen-Rosa (Slides) */
+    --rosa-pop:#FBCBFA;    /* Rosa für weiche Akzente (Kundin) */
+    --apricot:#F5B79F;     /* exaktes Apricot der Visitenkarte */
+    --lachs:#F99B86;       /* Lachs für Akzente (Kundin) */
+    --orange:#EB694C;      /* exakte Koralle der Visitenkarte */
+    --orange-energie:#EB694C; /* auf Marken-Koralle vereinheitlicht */
+    --orange-dark:#D65438; /* dunklere Koralle für Hover */
+    --senf:#D19D14;        /* Senf für Details (Kundin) */
+    --braun:#501A0D;       /* Braun für Kontraste & Tiefe (Kundin) */
+    --tinte:#2B2422;
     --tinte-soft:#6a5d57;
 
     --display:"Bricolage Grotesque", system-ui, sans-serif;
@@ -39,6 +44,7 @@
   }
   img{max-width:100%;display:block}
   a{color:inherit;text-decoration:none}
+  button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 
   .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
 
@@ -50,22 +56,32 @@
   /* ---------- Header ---------- */
   header{
     position:sticky;top:0;z-index:50;
-    background:rgba(255,255,255,.86);
+    background:rgba(255,255,255,.88);
     backdrop-filter:blur(10px);
     border-bottom:1px solid rgba(43,36,34,.07);
   }
-  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:1.5rem}
   .nav .wordmark{font-size:1.9rem}
   .nav .drei{font-size:1.7rem}
+  .menu{display:flex;gap:1.9rem;font-weight:600;font-size:.95rem;align-items:center}
+  .menu a{position:relative;padding:.2rem 0;transition:color .2s}
+  .menu a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--senf);transition:width .25s}
+  .menu a:hover{color:var(--orange)}
+  .menu a:hover::after{width:100%}
   .nav-cta{
-    font-family:var(--body);font-weight:600;font-size:.95rem;
+    font-weight:600;font-size:.95rem;
     color:var(--orange);border:1.5px solid var(--orange);
     padding:.5rem 1.15rem;border-radius:100px;transition:.25s;
   }
   .nav-cta:hover{background:var(--orange);color:#fff}
+  .burger{display:none;flex-direction:column;gap:5px;padding:.6rem;margin-right:-.6rem}
+  .burger span{width:24px;height:2px;background:var(--tinte);transition:.25s;display:block}
+  .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
   /* ---------- Hero ---------- */
-  .hero{padding-top:clamp(3rem,7vw,6rem);padding-bottom:clamp(3rem,6vw,5rem)}
+  .hero{padding-top:clamp(3rem,7vw,5.5rem);padding-bottom:clamp(3.5rem,7vw,6rem)}
   .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center}
   .eyebrow{
     display:inline-flex;align-items:center;gap:.55rem;
@@ -75,15 +91,17 @@
   .eyebrow::before{content:"";width:34px;height:1.5px;background:var(--orange)}
   .hero h1{
     font-family:var(--display);font-weight:700;
-    font-size:clamp(2.5rem,6.2vw,4.6rem);line-height:1.02;letter-spacing:-.025em;
-    margin-bottom:1.4rem;
+    font-size:clamp(2.4rem,5.6vw,4.2rem);line-height:1.04;letter-spacing:-.025em;
+    margin-bottom:1.6rem;
   }
-  .hero h1 .soft{color:var(--apricot)}
-  .hero p.lead{font-size:1.12rem;color:var(--tinte-soft);max-width:34ch;margin-bottom:2rem}
-  .claim{font-family:var(--display);font-weight:700;font-size:1.35rem;letter-spacing:-.01em;margin-bottom:2.2rem}
-  .claim span:nth-child(1){color:var(--orange)}
-  .claim span:nth-child(2){color:var(--apricot)}
-  .claim span:nth-child(3){color:var(--tinte)}
+  .hero h1 .hl{color:var(--orange)}
+  .claim{font-family:var(--display);font-weight:700;font-size:clamp(1.3rem,2.6vw,1.7rem);letter-spacing:-.01em;margin-bottom:1.4rem;line-height:1.45}
+  .claim span{display:block}
+  .claim .dot-o{color:var(--orange)}
+  .claim .dot-s{color:var(--senf)}
+  .claim .dot-l{color:var(--orange-energie)}
+  .claim .dot-b{color:var(--braun)}
+  .hero p.lead{font-size:1.12rem;color:var(--tinte-soft);max-width:36ch;margin-bottom:2.2rem}
   .btn{
     display:inline-flex;align-items:center;gap:.6rem;
     background:var(--orange);color:#fff;font-weight:600;
@@ -95,117 +113,273 @@
   .btn:hover .arr{transform:translateX(4px)}
   .hero-media{position:relative}
   .hero-media img{border-radius:var(--radius);box-shadow:0 30px 60px -30px rgba(43,36,34,.45);aspect-ratio:4/3.4;object-fit:cover}
+  /* Rosa Kreis-Badge (Kundin: Eröffnungsdatum als Kreis unten links am Bild) */
   .hero-badge{
-    position:absolute;bottom:-22px;left:-22px;
-    background:var(--apricot);color:var(--tinte);
-    border-radius:14px;padding:.85rem 1.2rem;font-weight:600;line-height:1.15;
-    box-shadow:0 14px 30px -14px rgba(43,36,34,.4);
+    position:absolute;bottom:-26px;left:-26px;
+    width:146px;height:146px;border-radius:50%;
+    background:var(--rosa-pop);color:var(--braun);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    font-weight:700;line-height:1.2;padding:1rem;
+    box-shadow:0 16px 34px -16px rgba(80,26,13,.45);
+    transform:rotate(-6deg);
   }
-  .hero-badge b{display:block;font-family:var(--display);font-size:1.15rem}
-  .hero-badge small{font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+  .hero-badge small{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;opacity:.75}
+  .hero-badge b{font-family:var(--display);font-size:1.02rem}
+
+  /* ---------- Schwebender "Schreib uns"-Button (läuft beim Scrollen mit) ---------- */
+  .float-cta{
+    position:fixed;right:clamp(1rem,3vw,2.2rem);bottom:clamp(1rem,3vw,2.2rem);z-index:60;
+    width:108px;height:108px;border-radius:50%;
+    background:var(--orange);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 18px 40px -16px rgba(80,26,13,.55);
+    transition:transform .25s,opacity .35s,visibility .35s,background .25s;
+  }
+  .float-cta:hover{transform:scale(1.06);background:var(--orange-energie)}
+  .float-cta svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 14s linear infinite}
+  .float-cta svg text{font-family:var(--body);font-weight:700;font-size:11.5px;letter-spacing:.24em;fill:#fff}
+  .float-cta .mitte{font-size:1.5rem;line-height:1}
+  .float-cta.weg{opacity:0;visibility:hidden;transform:scale(.8)}
+  @keyframes spin{to{transform:rotate(360deg)}}
 
   /* ---------- Section base ---------- */
   .section{padding-block:clamp(3.5rem,8vw,7rem)}
-  .section-head{max-width:46ch;margin-bottom:3rem}
+  .section-head{max-width:52ch;margin-bottom:3rem}
   .kicker{font-family:var(--script);font-size:2rem;color:var(--orange);line-height:1;display:block;margin-bottom:.2rem}
   .section-head h2{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4vw,2.9rem);letter-spacing:-.02em;line-height:1.08}
   .section-head p{color:var(--tinte-soft);margin-top:1rem;font-size:1.08rem}
 
-  /* ---------- Bereiche ---------- */
-  .bereiche{background:var(--rosa)}
+  /* ---------- Wir schaffen Raum3 ---------- */
+  .vision{background:var(--rosa)}
+  .vision-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+  .vision h2{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,4vw,2.9rem);letter-spacing:-.02em;line-height:1.1;margin-bottom:1.4rem}
+  .vision h2 em{font-style:normal;color:var(--orange)}
+  .vision p{color:var(--tinte-soft);font-size:1.08rem;margin-bottom:1.1rem}
+  .vision-liste{list-style:none;margin-top:.4rem}
+  .vision-liste li{
+    position:relative;padding-left:1.6rem;margin-bottom:.55rem;
+    font-weight:600;font-size:1.06rem;color:var(--tinte);
+  }
+  .vision-liste li::before{
+    content:"";position:absolute;left:0;top:.52em;
+    width:11px;height:11px;border-radius:50%;background:var(--senf);
+  }
+  .vision-intro{font-family:var(--display);font-weight:600;font-size:1.15rem;color:var(--tinte) !important}
+
+  /* ---------- 3 Bereiche ---------- */
+  /* Farbige Sektionsflächen (Visitenkarten-Look): weiße Karten heben sich klar ab,
+     Sektionen wechseln zwischen Apricot und Rosa – kein Weiß-auf-Weiß. */
+  .bereiche{background:var(--apricot)}
+  .bereiche .section-head p,.angebote .section-head p{color:rgba(80,26,13,.7)}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+  .cards>*{min-width:0} /* verhindert, dass lange Wörter die Spalten ungleich dehnen */
   .card{
-    background:#fff;border-radius:var(--radius);padding:2rem 1.8rem;
-    display:flex;flex-direction:column;border:1px solid rgba(43,36,34,.05);
+    background:#fff;border-radius:var(--radius);padding:2.1rem 1.8rem;
+    display:flex;flex-direction:column;border:1px solid rgba(43,36,34,.08);
     transition:.3s;
   }
   .card:hover{transform:translateY(-6px);box-shadow:0 24px 50px -30px rgba(43,36,34,.4)}
-  .card .tag{font-family:var(--script);font-size:1.7rem;color:var(--apricot);line-height:1}
-  .card h3{font-family:var(--display);font-weight:700;font-size:1.6rem;letter-spacing:-.01em;margin:.1rem 0 .9rem}
+  .card .strich{width:38px;height:4px;border-radius:2px;margin-bottom:1.1rem}
+  .card:nth-child(1) .strich{background:var(--orange)}
+  .card:nth-child(2) .strich{background:var(--senf)}
+  .card:nth-child(3) .strich{background:var(--lachs)}
+  .card h3{font-family:var(--display);font-weight:700;font-size:1.6rem;letter-spacing:-.01em;margin-bottom:.9rem}
   .card p{color:var(--tinte-soft);font-size:.98rem;flex:1}
-  .card .preis{
-    margin-top:1.6rem;padding-top:1.1rem;border-top:1px solid rgba(43,36,34,.1);
-    font-weight:600;color:var(--tinte);
+
+  /* ---------- Galerie / Carousel ---------- */
+  .raeume{background:var(--rosa)}
+  .raeume .kicker{color:var(--orange)}
+  .raeume .section-head p{color:var(--tinte-soft)}
+  .carousel{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 28px 56px -30px rgba(80,26,13,.55);background:var(--braun)}
+  .carousel-track{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1)}
+  .carousel-slide{flex:0 0 100%;position:relative}
+  .carousel-slide img{width:100%;aspect-ratio:16/9.5;object-fit:cover}
+  .carousel-slide figcaption{
+    position:absolute;left:0;right:0;bottom:0;
+    padding:2.4rem 1.6rem .95rem;
+    background:linear-gradient(to top, rgba(43,36,34,.72), transparent);
+    color:#fff;font-weight:600;font-size:1rem;letter-spacing:.01em;
   }
-  .card .preis b{font-family:var(--display);color:var(--orange);font-size:1.25rem}
+  .carousel-btn{
+    position:absolute;top:50%;transform:translateY(-50%);z-index:2;
+    width:48px;height:48px;border-radius:50%;
+    background:rgba(255,255,255,.92);color:var(--tinte);
+    display:flex;align-items:center;justify-content:center;font-size:1.25rem;
+    box-shadow:0 8px 22px -8px rgba(43,36,34,.5);transition:.25s;
+  }
+  .carousel-btn:hover{background:var(--orange);color:#fff}
+  .carousel-btn.prev{left:1rem}
+  .carousel-btn.next{right:1rem}
+  .carousel-dots{display:flex;gap:.6rem;justify-content:center;margin-top:1.4rem}
+  .carousel-dots button{
+    width:11px;height:11px;border-radius:50%;
+    background:rgba(80,26,13,.28);transition:.25s;padding:0;
+  }
+  .carousel-dots button.aktiv{background:var(--braun);transform:scale(1.25)}
 
-  /* ---------- Was ist raum3 ---------- */
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center}
-  .about-text h2{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,3.8vw,2.7rem);letter-spacing:-.02em;line-height:1.1;margin-bottom:1.3rem}
-  .about-text h2 em{font-style:normal;color:var(--orange)}
-  .about-text p{color:var(--tinte-soft);font-size:1.08rem;margin-bottom:1rem}
-  .about-media img{border-radius:var(--radius);box-shadow:0 24px 50px -30px rgba(43,36,34,.4);aspect-ratio:4/3;object-fit:cover}
+  /* ---------- Angebote ---------- */
+  .angebote{background:var(--apricot)}
+  .angebote .cards{align-items:stretch}
+  .angebot{
+    background:#fff;border-radius:var(--radius);padding:2.1rem 1.8rem;
+    display:flex;flex-direction:column;border:1px solid rgba(43,36,34,.08);
+    transition:.3s;
+  }
+  .angebot:hover{transform:translateY(-6px);box-shadow:0 24px 50px -30px rgba(43,36,34,.4)}
+  .angebot h3{font-family:var(--display);font-weight:700;font-size:1.45rem;letter-spacing:-.01em;margin-bottom:.6rem}
+  .angebot .sub{color:var(--tinte-soft);font-size:.97rem;margin-bottom:1.2rem}
+  .angebot ul{list-style:none;flex:1;margin-bottom:1.4rem}
+  .angebot ul li{
+    position:relative;padding-left:1.35rem;margin-bottom:.5rem;
+    font-size:.93rem;color:var(--tinte);
+  }
+  .angebot ul li::before{
+    content:"";position:absolute;left:0;top:.5em;
+    width:8px;height:8px;border-radius:50%;background:var(--senf);
+  }
+  .preis-chip{
+    align-self:flex-start;
+    background:var(--lachs);color:var(--braun);
+    border-radius:100px;padding:.45rem 1.1rem;
+    font-weight:700;font-family:var(--display);font-size:1.05rem;
+  }
+  .preis-chip small{font-family:var(--body);font-weight:600;font-size:.8rem}
+  .preis-hinweis{font-size:.82rem;color:var(--tinte-soft);margin-top:.55rem}
 
-  /* ---------- Räume ---------- */
-  .raeume{background:var(--apricot)}
-  .raeume .section-head h2,.raeume .kicker{color:var(--tinte)}
-  .raeume .kicker{color:#fff}
-  .raeume .section-head p{color:rgba(43,36,34,.7)}
-  .gallery{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
-  .gallery figure{border-radius:var(--radius);overflow:hidden;background:#fff;box-shadow:0 20px 44px -28px rgba(43,36,34,.5)}
-  .gallery img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3}
-  .gallery .plan img{object-fit:contain;background:var(--apricot);aspect-ratio:auto}
-  .gallery figcaption{padding:.85rem 1.1rem;font-weight:600;font-size:.95rem;background:#fff}
-  .gallery figcaption span{color:var(--tinte-soft);font-weight:400;display:block;font-size:.85rem}
+  /* Grundriss-Thumbnails unter den Angebots-Karten */
+  .plan-reihe{margin-top:1.5rem;padding-top:1.3rem;border-top:1px solid rgba(43,36,34,.1)}
+  .plan-reihe .plan-label{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--senf);display:block;margin-bottom:.7rem}
+  .plan-thumbs{display:flex;gap:.7rem;flex-wrap:wrap}
+  .plan-thumb{
+    width:86px;border-radius:10px;overflow:hidden;padding:0;
+    border:1.5px solid rgba(43,36,34,.12);background:var(--rosa);
+    transition:.25s;text-align:center;
+  }
+  .plan-thumb:hover{border-color:var(--orange);transform:translateY(-3px);box-shadow:0 10px 22px -12px rgba(43,36,34,.4)}
+  .plan-thumb img{aspect-ratio:4/3;object-fit:cover;width:100%}
+  .plan-thumb span{display:block;font-size:.66rem;font-weight:600;padding:.3rem .2rem;background:#fff;color:var(--tinte);line-height:1.25}
+
+  /* ---------- Lightbox für Grundrisse ---------- */
+  .lightbox{
+    position:fixed;inset:0;z-index:100;
+    background:rgba(43,36,34,.9);
+    display:none;align-items:center;justify-content:center;
+    padding:clamp(1rem,4vw,3rem);
+  }
+  .lightbox.offen{display:flex}
+  .lightbox-inhalt{position:relative;max-width:min(1000px,100%);width:100%}
+  .lightbox-inhalt img{
+    width:100%;max-height:76vh;object-fit:contain;
+    border-radius:var(--radius);background:#fff;
+  }
+  .lightbox-caption{color:#fff;text-align:center;font-weight:600;margin-top:1rem;font-size:1.05rem}
+  .lightbox-caption small{display:block;font-weight:400;font-size:.85rem;color:rgba(255,255,255,.65)}
+  .lightbox-btn{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:48px;height:48px;border-radius:50%;
+    background:rgba(255,255,255,.94);color:var(--tinte);
+    display:flex;align-items:center;justify-content:center;font-size:1.25rem;transition:.25s;
+  }
+  .lightbox-btn:hover{background:var(--orange);color:#fff}
+  .lightbox-btn.prev{left:-14px}
+  .lightbox-btn.next{right:-14px}
+  .lightbox-close{
+    position:absolute;top:-16px;right:-14px;
+    width:44px;height:44px;border-radius:50%;
+    background:var(--orange);color:#fff;font-size:1.2rem;
+    display:flex;align-items:center;justify-content:center;transition:.25s;z-index:2;
+  }
+  .lightbox-close:hover{background:var(--orange-energie)}
 
   /* ---------- Initiatorinnen ---------- */
-  .team{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:760px}
+  .team-sektion{background:var(--rosa)}
+  .team{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;max-width:760px;margin-top:2.4rem}
   .person{display:flex;gap:1.3rem;align-items:center}
-  .person img,.person .ph{width:104px;height:104px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--rosa)}
+  .person img,.person .ph{width:104px;height:104px;border-radius:50%;object-fit:cover;flex-shrink:0;background:#fff}
   .person .ph{display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:1.8rem;color:var(--apricot)}
   .person h3{font-family:var(--display);font-weight:700;font-size:1.3rem;line-height:1.1}
   .person p{color:var(--tinte-soft);font-size:.95rem;margin-top:.2rem}
-
-  /* ---------- Kontakt ---------- */
-  .kontakt{background:var(--tinte);color:#fff}
-  .kontakt .kicker{color:var(--apricot)}
-  .kontakt .section-head h2{color:#fff}
-  .kontakt .section-head p{color:rgba(255,255,255,.7)}
-  .kontakt-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,4rem)}
-  .kontakt-info p{color:rgba(255,255,255,.75);margin-bottom:1.4rem}
-  .kontakt-info .line{display:flex;gap:.7rem;align-items:flex-start;margin-bottom:.9rem;color:#fff}
-  .kontakt-info .line b{color:var(--apricot);font-weight:600}
-  .kontakt-card{
-    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
-    border-radius:var(--radius);padding:clamp(1.6rem,3vw,2.4rem);
-    display:flex;flex-direction:column;align-items:flex-start;justify-content:center;height:100%;
+  .zitat{
+    max-width:900px;margin-top:3rem;
+    font-family:var(--display);font-weight:600;
+    font-size:clamp(1.25rem,2.6vw,1.6rem);line-height:1.35;letter-spacing:-.01em;
+    padding-left:1.4rem;border-left:4px solid var(--senf);
   }
-  .kontakt-card h3{font-family:var(--display);font-weight:700;font-size:1.6rem;letter-spacing:-.01em;margin-bottom:.7rem}
-  .kontakt-card p{color:rgba(255,255,255,.78);margin-bottom:1.6rem}
-  .kontakt-card p b{color:var(--apricot);font-weight:600}
-  .kontakt-alt{font-size:.9rem;color:rgba(255,255,255,.55);margin:1.2rem 0 0}
-  .kontakt-alt a{color:var(--apricot)}
 
-  /* ---------- Footer ---------- */
-  footer{background:#1f1916;color:rgba(255,255,255,.7);padding-block:3rem}
+  /* ---------- Kontakt (orange, Kundin) ---------- */
+  .kontakt{background:var(--orange);color:#fff}
+  .kontakt .kicker{color:var(--rosa-pop)}
+  .kontakt .section-head h2{color:#fff}
+  .kontakt-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,4rem)}
+  .kontakt-info p{color:rgba(255,255,255,.88);margin-bottom:1.4rem}
+  .kontakt-label{font-family:var(--display);font-weight:700;font-size:1.15rem;color:#fff !important;margin-bottom:1rem !important}
+  .kontakt-info .line{display:flex;gap:.7rem;align-items:flex-start;margin-bottom:.9rem;color:#fff}
+  .kontakt-info .line b{color:var(--rosa-pop);font-weight:700;min-width:3.2rem}
+  .kontakt-card{
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);
+    border-radius:var(--radius);padding:clamp(1.6rem,3vw,2.2rem);
+    display:flex;flex-direction:column;align-items:flex-start;
+  }
+  .kontakt-card + .kontakt-card{margin-top:1.4rem}
+  .kontakt-card h3{font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-.01em;margin-bottom:.7rem}
+  .kontakt-card p{color:rgba(255,255,255,.9);margin-bottom:1.5rem}
+  .kontakt-card p b{color:var(--rosa-pop);font-weight:700}
+  .btn-hell{background:#fff;color:var(--orange)}
+  .btn-hell:hover{background:var(--braun);color:#fff}
+  .kontakt-alt{font-size:.9rem;color:rgba(255,255,255,.72);margin:1.2rem 0 0}
+  .kontakt-alt a{color:#fff;text-decoration:underline}
+
+  /* ---------- Footer (Braun = Kontrast & Tiefe) ---------- */
+  footer{background:var(--braun);color:rgba(255,255,255,.75);padding-block:3rem}
   .foot-grid{display:flex;flex-wrap:wrap;gap:2rem;justify-content:space-between;align-items:flex-start}
   .foot-logo{height:46px;width:auto}
   .foot-addr{font-size:.95rem;line-height:1.7}
   .foot-links{display:flex;gap:1.5rem;font-size:.92rem}
   .foot-links a{transition:.2s}
-  .foot-links a:hover{color:var(--orange)}
-  .foot-bottom{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.1);font-size:.82rem;color:rgba(255,255,255,.4);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+  .foot-links a:hover{color:var(--lachs)}
+  .foot-bottom{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.12);font-size:.82rem;color:rgba(255,255,255,.45);display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
 
   /* ---------- Reveal-Animation ---------- */
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
   .reveal.in{opacity:1;transform:none}
 
-  /* ---------- Mobile ---------- */
+  /* ---------- Mobile: eigens gestaltet ---------- */
   @media (max-width:900px){
-    .hero-grid,.about-grid,.kontakt-grid{grid-template-columns:1fr}
+    .menu{
+      display:none;
+      position:absolute;top:74px;left:0;right:0;
+      flex-direction:column;gap:0;align-items:stretch;
+      background:#fff;border-bottom:1px solid rgba(43,36,34,.08);
+      padding:.5rem 0;box-shadow:0 24px 40px -24px rgba(43,36,34,.35);
+    }
+    .menu.offen{display:flex}
+    .menu a{padding:.9rem var(--pad);font-size:1.05rem}
+    .menu a::after{display:none}
+    .burger{display:flex}
+    .nav-cta{display:none}
+
+    .hero-grid,.vision-grid,.kontakt-grid{grid-template-columns:1fr}
     .hero-media{order:-1}
     .hero p.lead{max-width:none}
+    .hero-badge{bottom:-26px;left:12px;width:126px;height:126px}
     .cards{grid-template-columns:1fr}
     .team{grid-template-columns:1fr}
-    .gallery{grid-template-columns:1fr}
+    .carousel-slide img{aspect-ratio:4/3.2}
+    .carousel-btn{width:42px;height:42px}
+    .float-cta{width:88px;height:88px}
+    .float-cta svg text{font-size:12.5px}
+    .lightbox-btn.prev{left:6px}
+    .lightbox-btn.next{right:6px}
+    .lightbox-close{top:-14px;right:6px}
   }
   @media (max-width:560px){
-    .nav-cta{display:none}
-    .hero-badge{left:0}
+    .plan-thumb{width:78px}
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
     .reveal{opacity:1;transform:none;transition:none}
+    .float-cta svg{animation:none}
+    .carousel-track{transition:none}
   }
 </style>
 </head>
@@ -216,9 +390,28 @@
     <a href="#top" class="wordmark" aria-label="Raum3 – Startseite">
       <span class="raum">raum</span><span class="drei">drei</span>
     </a>
-    <a href="#interesse" class="nav-cta">Interesse anmelden</a>
+    <nav class="menu" id="menu" aria-label="Hauptnavigation">
+      <a href="#vision">Raum3</a>
+      <a href="#bereiche">Bereiche</a>
+      <a href="#raeume">Räume</a>
+      <a href="#angebote">Angebote</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a href="#kontakt" class="nav-cta">Schreib uns</a>
+    <button class="burger" aria-expanded="false" aria-controls="menu" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- Schwebender Kontakt-Button: läuft beim Scrollen mit (Kundin, Referenz weit-vorn.de) -->
+<a href="#kontakt" class="float-cta" id="floatCta" aria-label="Schreib uns – zum Kontakt">
+  <svg viewBox="0 0 100 100" aria-hidden="true">
+    <defs><path id="kreisbahn" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+    <text><textPath href="#kreisbahn">SCHREIB UNS&#8202;&#8226;&#8202;SCHREIB UNS&#8202;&#8226;&#8202;</textPath></text>
+  </svg>
+  <span class="mitte" aria-hidden="true">→</span>
+</a>
 
 <main id="top">
 
@@ -226,141 +419,289 @@
   <section class="hero wrap">
     <div class="hero-grid">
       <div class="hero-copy">
-        <span class="eyebrow">Bald in Bergisch Gladbach</span>
-        <h1>Es entsteht ein <span class="soft">neuer Ort</span> in Bensberg.</h1>
-        <p class="lead">Ein Ort, der Arbeiten, Wachsen und Gestalten miteinander verbindet — ein Raum der Möglichkeiten für alle, die gemeinsam etwas bewegen wollen.</p>
-        <div class="claim"><span>Arbeiten.</span> <span>Wachsen.</span> <span>Gestalten.</span></div>
-        <a href="#interesse" class="btn">Von Anfang an dabei sein <span class="arr">→</span></a>
+        <span class="eyebrow">Bald in Bensberg, Bergisch Gladbach</span>
+        <h1>Manche Ideen brauchen einfach den <span class="hl">richtigen Ort</span>.</h1>
+        <div class="claim">
+          <span>Zum Arbeiten<b class="dot-o">.</b></span>
+          <span>Zum Begegnen<b class="dot-s">.</b></span>
+          <span>Zum Ausprobieren<b class="dot-l">.</b></span>
+          <span>Zum Wachsen<b class="dot-b">.</b></span>
+        </div>
+        <p class="lead">Diesen Ort schaffen wir gerade in Bensberg.</p>
+        <a href="#kontakt" class="btn">Schreib uns <span class="arr">→</span></a>
       </div>
       <div class="hero-media">
         <img src="assets/img/raum-mittlere-ebene.jpg" alt="Heller, offener Raum mit großer Fensterfront, Holzboden und Galerie-Ebene" />
-        <div class="hero-badge"><small>Eröffnung</small><b>11. September 2026</b></div>
+        <div class="hero-badge" aria-label="Eröffnung am 11. September 2026">
+          <small>Eröffnung</small>
+          <b>11. September<br>2026</b>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- DIE DREI BEREICHE -->
-  <section class="section bereiche reveal">
+  <!-- WIR SCHAFFEN RAUM3 -->
+  <section class="section vision reveal" id="vision">
+    <div class="wrap">
+      <div class="vision-grid">
+        <div>
+          <h2>Wir schaffen Raum3 — einen <em>Raum der Möglichkeiten</em>.</h2>
+          <p class="vision-intro">Raum3 ist ein Ort für alle, die gemeinsam etwas bewegen wollen. Ein wandelbarer Ort, an dem Arbeiten, Wachsen und Gestalten zusammenkommen.</p>
+          <p>Hier verbinden sich Coworking, Kurs- und Workshopräume sowie kreative Formate zu einem lebendigen Begegnungsort. Offen für neue Ideen, neue Perspektiven und neue Möglichkeiten.</p>
+        </div>
+        <div>
+          <p style="font-weight:600;color:var(--tinte);font-size:1.08rem;margin-bottom:1rem">Raum3 ist ein Ort, an dem Menschen:</p>
+          <ul class="vision-liste">
+            <li>an ihren Ideen arbeiten</li>
+            <li>Neues ausprobieren</li>
+            <li>Wissen teilen</li>
+            <li>und sich begegnen</li>
+            <li>gemeinsam wachsen</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 BEREICHE – EIN RAUM -->
+  <section class="section bereiche reveal" id="bereiche">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">drei Bereiche, ein Ort</span>
-        <h2>Wofür hier Raum ist.</h2>
-        <p>Raum3 ist mehr als ein Coworking Space, mehr als ein Kursraum, mehr als eine Werkstatt. Such dir aus, was zu dir passt.</p>
+        <span class="kicker">drei Bereiche, eine Haltung</span>
+        <h2>3 Bereiche — ein Raum.</h2>
+        <p>Ob du konzentriert arbeiten, dich persönlich weiterentwickeln oder kreativ werden möchtest: Raum3 bietet den passenden Rahmen. Drei Bereiche, eine gemeinsame Haltung: Menschen dabei zu unterstützen, Ideen zu verwirklichen, Neues auszuprobieren und miteinander in Verbindung zu kommen.</p>
       </div>
       <div class="cards">
         <article class="card">
-          <span class="tag">eins</span>
+          <span class="strich" aria-hidden="true"></span>
           <h3>Arbeiten</h3>
           <p>Selbstständige, Start-ups, Remote Worker und Unternehmen aus der Region finden hier einen inspirierenden Raum für Coworking. Neben Arbeitsplätzen und Meetingräumen entstehen neue Netzwerke, Kooperationen und Ideen. Raum3 bietet mehr als Schreibtische — er schafft Verbindung.</p>
-          <div class="preis">ab <b>25&nbsp;€</b> / Tag</div>
         </article>
         <article class="card">
-          <span class="tag">zwei</span>
+          <span class="strich" aria-hidden="true"></span>
           <h3>Wachsen</h3>
           <p>Trainer:innen, Coaches und Berater:innen finden hier Räume für Entwicklung und Wachstum. Gerade in Zeiten des Wandels wächst das Bedürfnis nach Resilienz, Selbstführung und Sinn. Raum3 schafft den Rahmen — für Coachings, Retreats, Yoga oder Fortbildungen, die Menschen stärken und verbinden.</p>
-          <div class="preis">ab <b>20&nbsp;€</b> / Stunde</div>
         </article>
         <article class="card">
-          <span class="tag">drei</span>
+          <span class="strich" aria-hidden="true"></span>
           <h3>Gestalten</h3>
           <p>Raum3 lädt ein zum kreativen Tun, Ausprobieren und Teilen. Wer Ideen und Kreativität einbringen möchte, findet hier Platz für offene Ateliers, Workshops sowie künstlerische und handwerkliche Formate. Kreativität macht Raum3 lebendig und verbindet.</p>
-          <div class="preis">ab <b>25&nbsp;€</b> / Stunde</div>
         </article>
       </div>
     </div>
   </section>
 
-  <!-- WAS IST RAUM3 -->
-  <section class="section wrap reveal">
-    <div class="about-grid">
-      <div class="about-text">
-        <h2>Raum3 ist ein <em>Raum der Möglichkeiten</em>.</h2>
-        <p>Ein modularer Ort zum Arbeiten, Wachsen und Gestalten. Raum3 verbindet Coworking, Kurs- und Seminarräume sowie kreative Formate zu einem lokalen Arbeits-, Lern- und Begegnungsort.</p>
-        <p>Mit Community-Fokus — für alle, die gemeinsam arbeiten, lernen, wachsen und gestalten wollen.</p>
-      </div>
-      <div class="about-media">
-        <img src="assets/img/raum-galerie.jpg" alt="Blick von der Galerie auf den hellen Hauptraum mit Holzboden und Spots" />
-      </div>
-    </div>
-  </section>
-
-  <!-- DIE RÄUME -->
-  <section class="section raeume reveal">
+  <!-- DIE RÄUME: CAROUSEL ÜBER 3 EBENEN -->
+  <section class="section raeume reveal" id="raeume">
     <div class="wrap">
       <div class="section-head">
         <span class="kicker">die Räume</span>
-        <h2>Über zwei Ebenen gedacht.</h2>
-        <p>Vom Coworking über Kurse bis Yoga: Die Flächen lassen sich flexibel für ganz unterschiedliche Formate nutzen.</p>
+        <h2>Über 3 Ebenen gedacht.</h2>
+        <p>Drei Ebenen, drei Atmosphären.<br>Ein Ort für Fokus, Inspiration und Austausch.</p>
       </div>
-      <div class="gallery">
-        <figure>
-          <img src="assets/img/raum-mittlere-ebene.jpg" alt="Mittlere Ebene mit Fensterfront und Treppe zur Galerie" />
-          <figcaption>Mittlere Ebene<span>Offene Arbeits- und Begegnungsfläche</span></figcaption>
-        </figure>
-        <figure>
-          <img src="assets/img/raum-galerie.jpg" alt="Blick von der Galerie-Ebene nach unten" />
-          <figcaption>Galerie-Ebene<span>Rückzug, Meetings & Coaching</span></figcaption>
-        </figure>
-        <figure class="plan">
-          <img src="assets/img/grundriss-eg.png" alt="Grundriss Erdgeschoss: Coworking Flex Desk, Kurse, Vortrag, Yoga" loading="lazy" />
-          <figcaption>Erdgeschoss<span>Coworking Flex Desk · Kurse · Vortrag · Yoga</span></figcaption>
-        </figure>
-        <figure class="plan">
-          <img src="assets/img/grundriss-og.png" alt="Grundriss Obergeschoss" loading="lazy" />
-          <figcaption>Obergeschoss<span>Coworking Fix Desk · Meeting · Coaching</span></figcaption>
-        </figure>
+
+      <div class="carousel" id="carousel" aria-roledescription="Karussell" aria-label="Fotos der Räume">
+        <div class="carousel-track" id="carouselTrack">
+          <figure class="carousel-slide">
+            <img src="assets/img/mural-foto-a.jpg" alt="Eingangsbereich von Raum3 mit Blick in den offenen Raum" />
+            <figcaption>Der Eingang — hier beginnt Raum3</figcaption>
+          </figure>
+          <figure class="carousel-slide">
+            <img src="assets/img/raum-mittlere-ebene.jpg" alt="Große offene Halle mit Fensterfront, Holzboden und Galerie-Ebene" loading="lazy" />
+            <figcaption>Die multifunktionale Ebene</figcaption>
+          </figure>
+          <figure class="carousel-slide">
+            <img src="assets/img/mural-foto-c.jpg" alt="Fensterfront mit Treppe zur Galerie-Ebene" loading="lazy" />
+            <figcaption>Fensterfront &amp; Treppe zur Galerie</figcaption>
+          </figure>
+          <figure class="carousel-slide">
+            <img src="assets/img/raum-galerie.jpg" alt="Blick von der Galerie-Ebene nach unten in den Raum" loading="lazy" />
+            <figcaption>Die Galerie-Ebene</figcaption>
+          </figure>
+          <figure class="carousel-slide">
+            <img src="assets/img/mural-foto-b.jpg" alt="Raum im Obergeschoss" loading="lazy" />
+            <figcaption>Das Obergeschoss</figcaption>
+          </figure>
+          <figure class="carousel-slide">
+            <img src="assets/img/mural-foto-d.jpg" alt="Außenansicht des Gebäudes in der Nikolausstraße in Bensberg" loading="lazy" />
+            <figcaption>Von außen: Nikolausstraße 3–5, Bensberg</figcaption>
+          </figure>
+        </div>
+        <button class="carousel-btn prev" id="carouselPrev" aria-label="Vorheriges Foto">←</button>
+        <button class="carousel-btn next" id="carouselNext" aria-label="Nächstes Foto">→</button>
+      </div>
+      <div class="carousel-dots" id="carouselDots" role="tablist" aria-label="Foto auswählen"></div>
+    </div>
+  </section>
+
+  <!-- ANGEBOTE -->
+  <section class="section angebote reveal" id="angebote">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>So kannst du Raum3 nutzen.</h2>
+        <p>Raum3 ist mehr als ein Coworking Space, mehr als ein Kursraum, mehr als eine Werkstatt. Such dir aus, was zu dir passt.</p>
+      </div>
+      <div class="cards">
+
+        <article class="angebot">
+          <h3>Coworking</h3>
+          <p class="sub">Für alle, die konzentriert arbeiten und gleichzeitig Teil eines inspirierenden Umfelds sein möchten.</p>
+          <ul>
+            <li>4 Galerie-Plätze mit Monitor und ergonomischer Ausstattung</li>
+            <li>8 Flex-Plätze auf der multifunktionalen Ebene</li>
+            <li>Ausstattung: WLAN, Drucker, Telefonbox</li>
+            <li>Getränke warm &amp; kalt</li>
+          </ul>
+          <div class="preis-chip">35&nbsp;€ <small>/ Tag</small></div>
+          <p class="preis-hinweis">Preisvorteil bei Mitgliedschaften</p>
+          <div class="plan-reihe">
+            <span class="plan-label">Grundrisse</span>
+            <div class="plan-thumbs">
+              <button class="plan-thumb" data-gruppe="coworking" data-i="0">
+                <img src="assets/img/grundriss-coworking-flexdesk.png" alt="Grundriss Coworking – Flex Desk (zum Vergrößern klicken)" loading="lazy" />
+                <span>Flex Desk</span>
+              </button>
+              <button class="plan-thumb" data-gruppe="coworking" data-i="1">
+                <img src="assets/img/grundriss-coworking-galerie.png" alt="Grundriss Coworking – Galerie (zum Vergrößern klicken)" loading="lazy" />
+                <span>Galerie</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="angebot">
+          <h3>Multifunktionale Ebene</h3>
+          <p class="sub">Ein wandelbarer Raum für Workshops, Yoga, Vorträge oder kreative Formate.</p>
+          <ul>
+            <li>große multifunktionale Ebene — 40&nbsp;qm</li>
+            <li>flexibles Raumsetting für z.&nbsp;B. Yoga, Vortrag oder Kurse</li>
+            <li>Ausstattung: WLAN, Drucker, Telefonbox, Beamer, Flipchart, Whiteboard, Moderationsmaterial</li>
+            <li>Getränke warm &amp; kalt</li>
+            <li>exklusive Nutzung möglich</li>
+          </ul>
+          <div class="preis-chip">35&nbsp;€ <small>/ Stunde</small></div>
+          <div class="plan-reihe">
+            <span class="plan-label">Grundrisse</span>
+            <div class="plan-thumbs">
+              <button class="plan-thumb" data-gruppe="multi" data-i="0">
+                <img src="assets/img/grundriss-kurse.png" alt="Grundriss multifunktionale Ebene – Setting Kurse (zum Vergrößern klicken)" loading="lazy" />
+                <span>Kurse</span>
+              </button>
+              <button class="plan-thumb" data-gruppe="multi" data-i="1">
+                <img src="assets/img/grundriss-vortrag.png" alt="Grundriss multifunktionale Ebene – Setting Vortrag (zum Vergrößern klicken)" loading="lazy" />
+                <span>Vortrag</span>
+              </button>
+              <button class="plan-thumb" data-gruppe="multi" data-i="2">
+                <img src="assets/img/grundriss-yoga.png" alt="Grundriss multifunktionale Ebene – Setting Yoga (zum Vergrößern klicken)" loading="lazy" />
+                <span>Yoga</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="angebot">
+          <h3>Coaching-/Meetingraum</h3>
+          <p class="sub">Ein ruhiger Raum für Gespräche, Coachings, Meetings oder Behandlungen.</p>
+          <ul>
+            <li>Coaching-/Meetingraum — 15&nbsp;qm</li>
+            <li>Raumsetting für Meeting, Coaching oder Behandlungen</li>
+            <li>Ausstattung: WLAN, Drucker, Beamer, Flipchart, Whiteboard, Moderationsmaterial</li>
+            <li>Getränke warm &amp; kalt</li>
+          </ul>
+          <div class="preis-chip">20&nbsp;€ <small>/ Stunde</small></div>
+          <div class="plan-reihe">
+            <span class="plan-label">Grundrisse</span>
+            <div class="plan-thumbs">
+              <button class="plan-thumb" data-gruppe="meeting" data-i="0">
+                <img src="assets/img/grundriss-meetingraum.png" alt="Grundriss Meetingraum (zum Vergrößern klicken)" loading="lazy" />
+                <span>Meetingraum</span>
+              </button>
+              <button class="plan-thumb" data-gruppe="meeting" data-i="1">
+                <img src="assets/img/grundriss-coachingraum.png" alt="Grundriss Coachingraum (zum Vergrößern klicken)" loading="lazy" />
+                <span>Coachingraum</span>
+              </button>
+            </div>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
 
-  <!-- INITIATORINNEN -->
-  <section class="section wrap reveal">
-    <div class="section-head">
-      <span class="kicker">die Initiatorinnen</span>
-      <h2>Zwei, die diesen Raum möglich machen.</h2>
+  <!-- LIGHTBOX (Grundrisse groß, durchklickbar) -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Grundriss-Ansicht">
+    <div class="lightbox-inhalt">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Schließen">✕</button>
+      <button class="lightbox-btn prev" id="lightboxPrev" aria-label="Vorheriger Grundriss">←</button>
+      <img src="" alt="" id="lightboxImg" />
+      <button class="lightbox-btn next" id="lightboxNext" aria-label="Nächster Grundriss">→</button>
+      <p class="lightbox-caption" id="lightboxCaption"></p>
     </div>
-    <div class="team">
-      <div class="person">
-        <img src="assets/img/gwen.jpg" alt="Gwendolyn Rothstein" />
-        <div>
-          <h3>Gwendolyn Rothstein</h3>
-          <p>Kursleiterin für Kinder &amp; Erwachsene — kreative Kurse, Kräuterpädagogik, Meditation &amp; innere Balance.</p>
+  </div>
+
+  <!-- INITIATORINNEN -->
+  <section class="section team-sektion reveal" id="initiatorinnen">
+    <div class="wrap">
+      <div class="section-head" style="max-width:80ch">
+        <span class="kicker">wer dahinter steht</span>
+        <h2>Die Initiatorinnen von Raum3.</h2>
+        <p>Unsere fachlichen Hintergründe reichen von Innenarchitektur, systemischer Beratung und kreativer Formatentwicklung über Eventmanagement, Kräuterpädagogik sowie Angebote rund um Meditation und innere Balance bis hin zu unternehmerischer Erfahrung. Diese Vielfalt prägt Raum3 — und die Art, wie wir diesen Ort gestalten.</p>
+      </div>
+      <div class="team">
+        <div class="person">
+          <img src="assets/img/gwen.jpg" alt="Gwendolyn Rothstein" />
+          <div>
+            <h3>Gwendolyn Rothstein</h3>
+            <p>Kursleiterin für Kinder &amp; Erwachsene — kreative Kurse, Kräuterpädagogik, Meditation &amp; innere Balance.</p>
+          </div>
+        </div>
+        <div class="person">
+          <!-- Foto von Cora wird nachgereicht -->
+          <div class="ph" aria-hidden="true">CH</div>
+          <div>
+            <h3>Cora Hanquet</h3>
+            <p>Gestalterin für Arbeits- und Möglichkeitsräume, systemische Beraterin.</p>
+          </div>
         </div>
       </div>
-      <div class="person">
-        <div class="ph" aria-hidden="true">CH</div>
-        <div>
-          <h3>Cora Hanquet</h3>
-          <p>Gestalterin für Arbeits- und Möglichkeitsräume, systemische Beraterin.</p>
-        </div>
-      </div>
+      <blockquote class="zitat">
+        „Raum3 lebt von den Menschen, die diesen Ort mitgestalten. Wir freuen uns darauf, dich kennenzulernen.“
+      </blockquote>
     </div>
   </section>
 
   <!-- KONTAKT -->
-  <section class="section kontakt reveal" id="interesse">
+  <section class="section kontakt reveal" id="kontakt">
     <div class="wrap">
       <div class="kontakt-grid">
         <div class="kontakt-info">
-          <span class="kicker">sei dabei</span>
-          <div class="section-head" style="margin-bottom:1.6rem">
-            <h2>Interesse anmelden.</h2>
+          <div class="section-head" style="margin-bottom:1.8rem">
+            <h2>Sei dabei.</h2>
           </div>
-          <p>Du möchtest von Anfang an dabei sein? Melde dich mit einer kurzen Nachricht — wir freuen uns, dich kennenzulernen.</p>
+          <p class="kontakt-label">Kontakt</p>
           <div class="line"><b>Ort</b><span>Nikolausstraße 3–5<br>51429 Bergisch Gladbach</span></div>
           <div class="line"><b>Mail</b><span>hallo@raum3-bensberg.de</span></div>
-          <div class="line"><b>Start</b><span>11. September 2026</span></div>
         </div>
 
-        <!-- Kein Formular nötig: direkter E-Mail-Kontakt (statisch, kein Backend, DSGVO-sparsam).
-             mailto öffnet das Mailprogramm der Besucher:in mit vorausgefüllter Vorlage. -->
-        <div class="kontakt-card">
-          <h3>Schreib uns direkt</h3>
-          <p>Sag uns kurz, wer du bist und was dich interessiert — <b>Arbeiten</b>, <b>Wachsen</b> oder <b>Gestalten</b>. Wir melden uns bei dir, sobald es losgeht.</p>
-          <a class="btn" href="mailto:hallo@raum3-bensberg.de?subject=Interesse%20an%20Raum3&body=Hallo%20Cora%20und%20Gwen%2C%0D%0A%0D%0Aich%20interessiere%20mich%20f%C3%BCr%20Raum3.%0D%0A%0D%0AName%3A%0D%0AInteresse%20(Arbeiten%20%2F%20Wachsen%20%2F%20Gestalten)%3A%0D%0AMeine%20Nachricht%3A%0D%0A%0D%0AViele%20Gr%C3%BC%C3%9Fe">
-            Interesse per E-Mail senden <span class="arr">→</span>
-          </a>
-          <p class="kontakt-alt">Oder direkt an <a href="mailto:hallo@raum3-bensberg.de">hallo@raum3-bensberg.de</a></p>
+        <div>
+          <!-- Kein Formular nötig: direkter E-Mail-Kontakt (statisch, kein Backend, DSGVO-sparsam).
+               mailto öffnet das Mailprogramm der Besucher:in mit vorausgefüllter Vorlage. -->
+          <div class="kontakt-card">
+            <h3>Schreib uns direkt</h3>
+            <p>Möchtest du mit dabei sein? Melde dich mit einer kurzen Nachricht, wer du bist und wofür du dich interessierst. Wir freuen uns, dich kennenzulernen.</p>
+            <a class="btn btn-hell" href="mailto:hallo@raum3-bensberg.de?subject=Interesse%20an%20Raum3&body=Hallo%20Cora%20und%20Gwen%2C%0D%0A%0D%0Aich%20interessiere%20mich%20f%C3%BCr%20Raum3.%0D%0A%0D%0AName%3A%0D%0AInteresse%20(Coworking%20%2F%20Multifunktionaler%20Raum%20%2F%20Coaching-%2FMeetingraum)%3A%0D%0AMeine%20Nachricht%3A%0D%0A%0D%0AViele%20Gr%C3%BC%C3%9Fe">
+              Interesse per E-Mail senden <span class="arr">→</span>
+            </a>
+            <p class="kontakt-alt">Oder direkt an <a href="mailto:hallo@raum3-bensberg.de">hallo@raum3-bensberg.de</a></p>
+          </div>
+
+          <div class="kontakt-card">
+            <h3>Auf dem Laufenden bleiben</h3>
+            <p>Möchtest du auf dem Laufenden bleiben? Melde dich gerne und du erhältst in Kürze unseren Newsletter.</p>
+            <a class="btn btn-hell" href="mailto:hallo@raum3-bensberg.de?subject=Newsletter-Anmeldung%20Raum3&body=Hallo%20Cora%20und%20Gwen%2C%0D%0A%0D%0Abitte%20nehmt%20mich%20in%20den%20Newsletter-Verteiler%20auf.%0D%0A%0D%0AName%3A%0D%0A%0D%0AViele%20Gr%C3%BC%C3%9Fe">
+              Newsletter anmelden <span class="arr">→</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -382,7 +723,7 @@
       <nav class="foot-links" aria-label="Rechtliches">
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Datenschutz</a>
-        <a href="#interesse">Interesse anmelden</a>
+        <a href="#kontakt">Schreib uns</a>
       </nav>
     </div>
     <div class="foot-bottom">
@@ -393,11 +734,116 @@
 </footer>
 
 <script>
-  // Sanfte Scroll-Reveals
+  // ---------- Sanfte Scroll-Reveals ----------
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // ---------- Mobile-Menü ----------
+  const burger = document.querySelector('.burger');
+  const menu = document.getElementById('menu');
+  burger.addEventListener('click', ()=>{
+    const offen = menu.classList.toggle('offen');
+    burger.setAttribute('aria-expanded', offen);
+  });
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
+    menu.classList.remove('offen');
+    burger.setAttribute('aria-expanded','false');
+  }));
+
+  // ---------- Foto-Carousel (Pfeile, Punkte, Wischen) ----------
+  const track = document.getElementById('carouselTrack');
+  const slides = track.children;
+  const dotsWrap = document.getElementById('carouselDots');
+  let slideIdx = 0;
+
+  for(let i=0;i<slides.length;i++){
+    const d = document.createElement('button');
+    d.setAttribute('aria-label','Foto '+(i+1)+' von '+slides.length);
+    d.addEventListener('click', ()=>zeigeSlide(i));
+    dotsWrap.appendChild(d);
+  }
+  function zeigeSlide(i){
+    slideIdx = (i + slides.length) % slides.length;
+    track.style.transform = 'translateX(-'+(slideIdx*100)+'%)';
+    [...dotsWrap.children].forEach((d,n)=>d.classList.toggle('aktiv', n===slideIdx));
+  }
+  document.getElementById('carouselPrev').addEventListener('click', ()=>zeigeSlide(slideIdx-1));
+  document.getElementById('carouselNext').addEventListener('click', ()=>zeigeSlide(slideIdx+1));
+  zeigeSlide(0);
+
+  // Wischen auf Touch-Geräten
+  let startX = null;
+  track.addEventListener('pointerdown', e=>{ startX = e.clientX; });
+  track.addEventListener('pointerup', e=>{
+    if(startX===null) return;
+    const dx = e.clientX - startX;
+    if(Math.abs(dx) > 40) zeigeSlide(slideIdx + (dx<0 ? 1 : -1));
+    startX = null;
+  });
+
+  // ---------- Grundriss-Lightbox (pro Angebot durchklickbar) ----------
+  const plaene = {
+    coworking: [
+      {src:'assets/img/grundriss-coworking-flexdesk.png', titel:'Coworking — Flex Desk', bereich:'Coworking'},
+      {src:'assets/img/grundriss-coworking-galerie.png',  titel:'Coworking — Galerie',   bereich:'Coworking'}
+    ],
+    multi: [
+      {src:'assets/img/grundriss-kurse.png',   titel:'Setting: Kurse',   bereich:'Multifunktionale Ebene'},
+      {src:'assets/img/grundriss-vortrag.png', titel:'Setting: Vortrag', bereich:'Multifunktionale Ebene'},
+      {src:'assets/img/grundriss-yoga.png',    titel:'Setting: Yoga',    bereich:'Multifunktionale Ebene'}
+    ],
+    meeting: [
+      {src:'assets/img/grundriss-meetingraum.png',  titel:'Meetingraum',  bereich:'Coaching-/Meetingraum'},
+      {src:'assets/img/grundriss-coachingraum.png', titel:'Coachingraum', bereich:'Coaching-/Meetingraum'}
+    ]
+  };
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  const lbCaption = document.getElementById('lightboxCaption');
+  let lbGruppe = null, lbIdx = 0, lbLetzterFokus = null;
+
+  function zeigePlan(i){
+    const g = plaene[lbGruppe];
+    lbIdx = (i + g.length) % g.length;
+    const p = g[lbIdx];
+    lbImg.src = p.src;
+    lbImg.alt = 'Grundriss: ' + p.titel;
+    lbCaption.innerHTML = p.titel + '<small>' + p.bereich + ' · ' + (lbIdx+1) + ' / ' + g.length + '</small>';
+  }
+  function oeffneLightbox(gruppe, i, ausloeser){
+    lbGruppe = gruppe;
+    lbLetzterFokus = ausloeser;
+    zeigePlan(i);
+    lightbox.classList.add('offen');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lightboxClose').focus();
+  }
+  function schliesseLightbox(){
+    lightbox.classList.remove('offen');
+    document.body.style.overflow = '';
+    if(lbLetzterFokus) lbLetzterFokus.focus();
+  }
+  document.querySelectorAll('.plan-thumb').forEach(btn=>{
+    btn.addEventListener('click', ()=>oeffneLightbox(btn.dataset.gruppe, +btn.dataset.i, btn));
+  });
+  document.getElementById('lightboxPrev').addEventListener('click', ()=>zeigePlan(lbIdx-1));
+  document.getElementById('lightboxNext').addEventListener('click', ()=>zeigePlan(lbIdx+1));
+  document.getElementById('lightboxClose').addEventListener('click', schliesseLightbox);
+  lightbox.addEventListener('click', e=>{ if(e.target===lightbox) schliesseLightbox(); });
+  document.addEventListener('keydown', e=>{
+    if(!lightbox.classList.contains('offen')) return;
+    if(e.key==='Escape') schliesseLightbox();
+    if(e.key==='ArrowLeft') zeigePlan(lbIdx-1);
+    if(e.key==='ArrowRight') zeigePlan(lbIdx+1);
+  });
+
+  // ---------- Schwebe-Button ausblenden, sobald Kontakt sichtbar ----------
+  const floatCta = document.getElementById('floatCta');
+  new IntersectionObserver((entries)=>{
+    entries.forEach(e=>floatCta.classList.toggle('weg', e.isIntersecting));
+  },{threshold:.15}).observe(document.getElementById('kontakt'));
 </script>
 </body>
 </html>

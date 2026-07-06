@@ -25,7 +25,6 @@
 
     --display:"Bricolage Grotesque", system-ui, sans-serif;
     --body:"Hanken Grotesk", system-ui, sans-serif;
-    --script:"Sacramento", cursive;
 
     --maxw:1180px;
     --pad:clamp(1.25rem, 5vw, 4rem);
@@ -48,10 +47,9 @@
 
   .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
 
-  /* ---------- Wortmarke ---------- */
-  .wordmark{font-family:var(--display);font-weight:800;letter-spacing:-.01em;line-height:1;display:inline-flex;align-items:flex-start}
-  .wordmark .raum{color:var(--orange);text-transform:uppercase}
-  .wordmark .drei{font-family:var(--script);font-weight:400;color:var(--apricot);margin-left:.12em;transform:translateY(-.05em);letter-spacing:0}
+  /* ---------- Logo (Original-Bildmarke der Kundin) ---------- */
+  .logo{display:inline-flex;align-items:center}
+  .logo img{height:56px;width:auto}
 
   /* ---------- Header ---------- */
   header{
@@ -61,8 +59,6 @@
     border-bottom:1px solid rgba(43,36,34,.07);
   }
   .nav{display:flex;align-items:center;justify-content:space-between;height:74px;gap:1.5rem}
-  .nav .wordmark{font-size:1.9rem}
-  .nav .drei{font-size:1.7rem}
   .menu{display:flex;gap:1.9rem;font-weight:600;font-size:.95rem;align-items:center}
   .menu a{position:relative;padding:.2rem 0;transition:color .2s}
   .menu a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--senf);transition:width .25s}
@@ -113,11 +109,11 @@
   .btn:hover .arr{transform:translateX(4px)}
   .hero-media{position:relative}
   .hero-media img{border-radius:var(--radius);box-shadow:0 30px 60px -30px rgba(43,36,34,.45);aspect-ratio:4/3.4;object-fit:cover}
-  /* Rosa Kreis-Badge (Kundin: Eröffnungsdatum als Kreis unten links am Bild) */
+  /* Kreis-Badge in der Markenfarbe (Kundin: Eröffnungsdatum als Kreis unten links am Bild) */
   .hero-badge{
     position:absolute;bottom:-30px;left:-30px;
     width:178px;height:178px;border-radius:50%;
-    background:var(--rosa-pop);color:var(--braun);
+    background:var(--orange);color:#fff;
     display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
     font-weight:700;line-height:1.2;padding:1.1rem;
     box-shadow:0 16px 34px -16px rgba(80,26,13,.45);
@@ -146,7 +142,6 @@
   .section{padding-block:clamp(3.5rem,8vw,7rem)}
   /* Überschriften dürfen die volle Breite nutzen (einzeilig), nur der Fließtext bleibt schmal */
   .section-head{margin-bottom:3rem}
-  .kicker{font-family:var(--script);font-size:2.3rem;color:var(--orange);line-height:1;display:block;margin-bottom:.25rem}
   .section-head h2{font-family:var(--display);font-weight:800;font-size:clamp(2.1rem,4.6vw,3.3rem);letter-spacing:-.025em;line-height:1.06;text-wrap:balance}
   .section-head p{color:var(--tinte-soft);margin-top:1rem;font-size:1.08rem;max-width:52ch}
 
@@ -189,7 +184,6 @@
 
   /* ---------- Galerie / Carousel ---------- */
   .raeume{background:var(--rosa)}
-  .raeume .kicker{color:var(--orange)}
   .raeume .section-head p{color:var(--tinte-soft)}
   .carousel{position:relative;border-radius:var(--radius);overflow:hidden;box-shadow:0 28px 56px -30px rgba(80,26,13,.55);background:var(--braun)}
   .carousel-track{display:flex;transition:transform .55s cubic-bezier(.4,0,.2,1)}
@@ -309,7 +303,6 @@
 
   /* ---------- Kontakt (orange, Kundin) ---------- */
   .kontakt{background:var(--orange);color:#fff}
-  .kontakt .kicker{color:var(--rosa-pop)}
   .kontakt .section-head h2{color:#fff}
   .kontakt-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,4rem)}
   .kontakt-info p{color:rgba(255,255,255,.88);margin-bottom:1.4rem}
@@ -389,8 +382,8 @@
 
 <header>
   <div class="wrap nav">
-    <a href="#top" class="wordmark" aria-label="Raum3 – Startseite">
-      <span class="raum">raum</span><span class="drei">drei</span>
+    <a href="#top" class="logo" aria-label="Raum3 – Startseite">
+      <img src="assets/logo/logo-header.png" alt="Raum3" />
     </a>
     <nav class="menu" id="menu" aria-label="Hauptnavigation">
       <a href="#vision">Raum3</a>
@@ -469,7 +462,6 @@
   <section class="section bereiche reveal" id="bereiche">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">drei Bereiche, eine Haltung</span>
         <h2>3 Bereiche — ein Raum.</h2>
         <p>Ob du konzentriert arbeiten, dich persönlich weiterentwickeln oder kreativ werden möchtest: Raum3 bietet den passenden Rahmen. Drei Bereiche, eine gemeinsame Haltung: Menschen dabei zu unterstützen, Ideen zu verwirklichen, Neues auszuprobieren und miteinander in Verbindung zu kommen.</p>
       </div>
@@ -497,7 +489,6 @@
   <section class="section raeume reveal" id="raeume">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">die Räume</span>
         <h2>Über 3 Ebenen gedacht.</h2>
         <p>Drei Ebenen, drei Atmosphären.<br>Ein Ort für Fokus, Inspiration und Austausch.</p>
       </div>
@@ -540,7 +531,6 @@
   <section class="section angebote reveal" id="angebote">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">für dich gedacht</span>
         <h2>So kannst du Raum3 nutzen.</h2>
         <p>Raum3 ist mehr als ein Coworking Space, mehr als ein Kursraum, mehr als eine Werkstatt. Such dir aus, was zu dir passt.</p>
       </div>
@@ -646,7 +636,6 @@
   <section class="section team-sektion reveal" id="initiatorinnen">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">wer dahinter steht</span>
         <h2>Die Initiatorinnen von Raum3.</h2>
         <p style="max-width:80ch">Unsere fachlichen Hintergründe reichen von Innenarchitektur, systemischer Beratung und kreativer Formatentwicklung über Eventmanagement, Kräuterpädagogik sowie Angebote rund um Meditation und innere Balance bis hin zu unternehmerischer Erfahrung. Diese Vielfalt prägt Raum3 — und die Art, wie wir diesen Ort gestalten.</p>
       </div>

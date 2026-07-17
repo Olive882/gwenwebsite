@@ -254,6 +254,35 @@
   .plan-thumb img{aspect-ratio:4/3;object-fit:cover;width:100%}
   .plan-thumb span{display:block;font-size:.66rem;font-weight:600;padding:.3rem .2rem;background:#fff;color:var(--tinte);line-height:1.25}
 
+  /* ---------- Programm: Was gerade bei uns entsteht (weiß, Kundin 2. Runde) ---------- */
+  .programm{background:var(--weiss)}
+  .programm-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2rem,5vw,4.5rem);align-items:start}
+  .kurs-label{font-family:var(--display);font-weight:700;font-size:1.15rem;margin-bottom:1rem}
+  .kurs-liste{list-style:none;margin-bottom:2rem}
+  .kurs-liste li{position:relative;padding-left:1.6rem;margin-bottom:.6rem;font-weight:600;font-size:1.06rem}
+  .kurs-liste li::before{content:"";position:absolute;left:0;top:.5em;width:11px;height:11px;border-radius:50%;background:var(--senf)}
+  .kurs-liste .alter{font-weight:500;color:var(--tinte-soft)}
+  .anmelde-pill{
+    display:inline-block;text-align:center;
+    background:var(--braun);color:#fff;font-weight:600;font-size:.98rem;
+    padding:.9rem 1.7rem;border-radius:100px;transition:.25s;
+  }
+  .anmelde-pill:hover{background:var(--orange);transform:translateY(-2px)}
+  .anmelde-pill b{font-weight:700}
+  .besonderes{margin-top:1.8rem;color:var(--tinte-soft);font-size:.98rem;max-width:44ch}
+  .besonderes b{color:var(--tinte)}
+  .prog-galerie + .prog-galerie{margin-top:2.2rem}
+  .prog-galerie h3{font-family:var(--display);font-weight:700;font-size:1.15rem;margin-bottom:.9rem}
+  .prog-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem}
+  .prog-thumb{
+    border-radius:12px;overflow:hidden;padding:0;
+    border:1.5px solid rgba(43,36,34,.12);background:var(--rosa);
+    transition:.25s;text-align:center;display:flex;flex-direction:column;
+  }
+  .prog-thumb:hover{border-color:var(--orange);transform:translateY(-3px);box-shadow:0 12px 26px -14px rgba(43,36,34,.4)}
+  .prog-thumb img{aspect-ratio:3/4;object-fit:cover;width:100%}
+  .prog-thumb span{display:block;font-size:.78rem;font-weight:600;padding:.45rem .35rem;background:#fff;color:var(--tinte);line-height:1.3;flex:1}
+
   /* ---------- Lightbox für Grundrisse ---------- */
   .lightbox{
     position:fixed;inset:0;z-index:100;
@@ -308,7 +337,7 @@
   .kontakt-info p{color:rgba(255,255,255,.88);margin-bottom:1.4rem}
   .kontakt-label{font-family:var(--display);font-weight:700;font-size:1.15rem;color:#fff !important;margin-bottom:1rem !important}
   .kontakt-info .line{display:flex;gap:.7rem;align-items:flex-start;margin-bottom:.9rem;color:#fff}
-  .kontakt-info .line b{color:var(--rosa-pop);font-weight:700;min-width:3.2rem}
+  .kontakt-info .line b{color:var(--braun);font-weight:700;min-width:3.2rem}
   .kontakt-card{
     background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);
     border-radius:var(--radius);padding:clamp(1.6rem,3vw,2.2rem);
@@ -317,7 +346,7 @@
   .kontakt-card + .kontakt-card{margin-top:1.4rem}
   .kontakt-card h3{font-family:var(--display);font-weight:700;font-size:1.5rem;letter-spacing:-.01em;margin-bottom:.7rem}
   .kontakt-card p{color:rgba(255,255,255,.9);margin-bottom:1.5rem}
-  .kontakt-card p b{color:var(--rosa-pop);font-weight:700}
+  .kontakt-card p b{color:var(--braun);font-weight:700}
   .btn-hell{background:#fff;color:var(--orange)}
   .btn-hell:hover{background:var(--braun);color:#fff}
   .kontakt-alt{font-size:.9rem;color:rgba(255,255,255,.72);margin:1.2rem 0 0}
@@ -352,7 +381,7 @@
     .burger{display:flex}
     .nav-cta{display:none}
 
-    .hero-grid,.vision-grid,.kontakt-grid{grid-template-columns:1fr}
+    .hero-grid,.vision-grid,.kontakt-grid,.programm-grid{grid-template-columns:1fr}
     .hero-media{order:-1}
     .hero p.lead{max-width:none}
     .hero-badge{bottom:-28px;left:12px;width:148px;height:148px}
@@ -390,6 +419,7 @@
       <a href="#bereiche">Bereiche</a>
       <a href="#raeume">Räume</a>
       <a href="#angebote">Angebote</a>
+      <a href="#programm">Programm</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
     <a href="#kontakt" class="nav-cta">Schreib uns</a>
@@ -403,7 +433,7 @@
 <a href="#kontakt" class="float-cta" id="floatCta" aria-label="Schreib uns – zum Kontakt">
   <svg viewBox="0 0 100 100" aria-hidden="true">
     <defs><path id="kreisbahn" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
-    <text><textPath href="#kreisbahn">SCHREIB UNS&#8202;&#8226;&#8202;SCHREIB UNS&#8202;&#8226;&#8202;</textPath></text>
+    <text><textPath href="#kreisbahn">SCHREIB UNS&#8226;SCHREIB UNS&#8226;</textPath></text>
   </svg>
   <span class="mitte" aria-hidden="true">→</span>
 </a>
@@ -415,7 +445,7 @@
     <div class="hero-grid">
       <div class="hero-copy">
         <span class="eyebrow">Bald in Bensberg, Bergisch Gladbach</span>
-        <h1>Manche Ideen brauchen einfach den <span class="hl">richtigen Ort</span>.</h1>
+        <h1>Ideen brauchen den <span class="hl">richtigen Ort</span>.</h1>
         <div class="claim">
           <span>Zum Arbeiten<b class="dot-o">.</b></span>
           <span>Zum Begegnen<b class="dot-s">.</b></span>
@@ -450,7 +480,7 @@
             <li>an ihren Ideen arbeiten</li>
             <li>Neues ausprobieren</li>
             <li>Wissen teilen</li>
-            <li>und sich begegnen</li>
+            <li>sich begegnen</li>
             <li>gemeinsam wachsen</li>
           </ul>
         </div>
@@ -469,7 +499,7 @@
         <article class="card">
           <span class="strich" aria-hidden="true"></span>
           <h3>Arbeiten</h3>
-          <p>Selbstständige, Start-ups, Remote Worker und Unternehmen aus der Region finden hier einen inspirierenden Raum für Coworking. Neben Arbeitsplätzen und Meetingräumen entstehen neue Netzwerke, Kooperationen und Ideen. Raum3 bietet mehr als Schreibtische — er schafft Verbindung.</p>
+          <p>Selbstständige, Start-ups, Remote Worker und Unternehmen aus der Region finden hier einen inspirierenden Raum für Coworking. Neben Arbeitsplätzen und Meetingräumen entstehen neue Netzwerke, Kooperationen und Ideen. Raum3 bietet mehr als Schreibtische <span style="white-space:nowrap">— er schafft Verbindung.</span></p>
         </article>
         <article class="card">
           <span class="strich" aria-hidden="true"></span>
@@ -509,11 +539,11 @@
           </figure>
           <figure class="carousel-slide">
             <img src="assets/img/raum-galerie.jpg" alt="Blick von der Galerie-Ebene nach unten in den Raum" loading="lazy" />
-            <figcaption>Die Galerie-Ebene</figcaption>
+            <figcaption>Blick auf die multifunktionale Ebene</figcaption>
           </figure>
           <figure class="carousel-slide">
-            <img src="assets/img/mural-foto-b.jpg" alt="Raum im Obergeschoss" loading="lazy" />
-            <figcaption>Das Obergeschoss</figcaption>
+            <img src="assets/img/mural-foto-b.jpg" alt="Die Galerie-Ebene im Obergeschoss mit großer Fensterfront" loading="lazy" />
+            <figcaption>Die Galerie-Ebene</figcaption>
           </figure>
           <figure class="carousel-slide">
             <img src="assets/img/mural-foto-d.jpg" alt="Außenansicht des Gebäudes in der Nikolausstraße in Bensberg" loading="lazy" />
@@ -546,7 +576,7 @@
             <li>Getränke warm &amp; kalt</li>
           </ul>
           <div class="preis-chip">35&nbsp;€ <small>/ Tag</small></div>
-          <p class="preis-hinweis">Preisvorteil bei Mitgliedschaften</p>
+          <p class="preis-hinweis">zzgl. gesetzlicher MwSt.<br>Preisvorteil bei Mitgliedschaften</p>
           <div class="plan-reihe">
             <span class="plan-label">Grundrisse</span>
             <div class="plan-thumbs">
@@ -573,6 +603,7 @@
             <li>exklusive Nutzung möglich</li>
           </ul>
           <div class="preis-chip">35&nbsp;€ <small>/ Stunde</small></div>
+          <p class="preis-hinweis">zzgl. gesetzlicher MwSt.<br>Preisvorteil bei Mitgliedschaften</p>
           <div class="plan-reihe">
             <span class="plan-label">Grundrisse</span>
             <div class="plan-thumbs">
@@ -602,6 +633,7 @@
             <li>Getränke warm &amp; kalt</li>
           </ul>
           <div class="preis-chip">20&nbsp;€ <small>/ Stunde</small></div>
+          <p class="preis-hinweis">zzgl. gesetzlicher MwSt.</p>
           <div class="plan-reihe">
             <span class="plan-label">Grundrisse</span>
             <div class="plan-thumbs">
@@ -621,13 +653,74 @@
     </div>
   </section>
 
+  <!-- PROGRAMM: WAS GERADE BEI UNS ENTSTEHT (neue Sektion, Kundin 2. Runde) -->
+  <section class="section programm reveal" id="programm">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Was gerade bei uns entsteht.</h2>
+        <p style="max-width:70ch">Ob kreativ, naturverbunden oder einfach auf der Suche nach einer kleinen Auszeit — bei Raum3 entstehen regelmäßig neue Angebote für Groß und Klein. Hier findest du unsere aktuellen Kurse. Und das ist erst der Anfang: Unser Programm wächst stetig und wird immer wieder um neue Workshops, kreative Formate und besondere Veranstaltungen ergänzt.</p>
+      </div>
+      <div class="programm-grid">
+        <div>
+          <p class="kurs-label">Unsere aktuellen Kurse</p>
+          <ul class="kurs-liste">
+            <li>Kinderatelier <span class="alter">(8–12 Jahre)</span></li>
+            <li>Kräuterkinder <span class="alter">(7–10 Jahre)</span></li>
+            <li>Wild &amp; Kreativ <span class="alter">(10–14 Jahre)</span></li>
+            <li>Atelier für die Großen <span class="alter">(Erwachsene)</span></li>
+          </ul>
+          <a class="anmelde-pill" href="mailto:hallo@raum3-bensberg.de?subject=Kurs-Anmeldung%20Raum3&body=Hallo%20Cora%20und%20Gwen%2C%0D%0A%0D%0Aich%20m%C3%B6chte%20mich%20f%C3%BCr%20einen%20Kurs%20anmelden.%0D%0A%0D%0AName%3A%0D%0AKurs%20(Kinderatelier%20%2F%20Kr%C3%A4uterkinder%20%2F%20Wild%20%26%20Kreativ%20%2F%20Atelier%20f%C3%BCr%20die%20Gro%C3%9Fen)%3A%0D%0A%0D%0AViele%20Gr%C3%BC%C3%9Fe">
+            Anmeldung unter <b>hallo@raum3-bensberg.de</b>
+          </a>
+          <p class="besonderes"><b>Du suchst etwas Besonderes?</b><br>Viele unserer Angebote sind auch als Workshop, Kindergeburtstag oder individuelle Feier buchbar. Sprich uns einfach an!</p>
+        </div>
+        <div>
+          <div class="prog-galerie">
+            <h3>Natur- &amp; Kreativwerkstatt</h3>
+            <div class="prog-thumbs">
+              <button class="prog-thumb" data-gruppe="natur" data-i="0">
+                <img src="assets/img/programm-natur-kreativwerkstatt.jpg" alt="Natur- und Kreativwerkstatt (zum Vergrößern klicken)" loading="lazy" />
+                <span>Natur- und Kreativwerkstatt</span>
+              </button>
+              <button class="prog-thumb" data-gruppe="natur" data-i="1">
+                <img src="assets/img/programm-kraeuterkinder.png" alt="Programmflyer Kräuterkinder (zum Vergrößern klicken)" loading="lazy" />
+                <span>Kräuterkinder</span>
+              </button>
+              <button class="prog-thumb" data-gruppe="natur" data-i="2">
+                <img src="assets/img/programm-wild-kreativ.png" alt="Programmflyer Wild &amp; Kreativ (zum Vergrößern klicken)" loading="lazy" />
+                <span>Wild &amp; Kreativ</span>
+              </button>
+            </div>
+          </div>
+          <div class="prog-galerie">
+            <h3>Ateliers &amp; Workshops</h3>
+            <div class="prog-thumbs">
+              <button class="prog-thumb" data-gruppe="ateliers" data-i="0">
+                <img src="assets/img/programm-ateliers-workshops.jpg" alt="Ateliers und Workshops (zum Vergrößern klicken)" loading="lazy" />
+                <span>Ateliers &amp; Workshops</span>
+              </button>
+              <button class="prog-thumb" data-gruppe="ateliers" data-i="1">
+                <img src="assets/img/programm-kinderatelier.png" alt="Programmflyer Kinderatelier (zum Vergrößern klicken)" loading="lazy" />
+                <span>Kinderatelier</span>
+              </button>
+              <button class="prog-thumb" data-gruppe="ateliers" data-i="2">
+                <img src="assets/img/programm-atelier-grosse.png" alt="Programmflyer Atelier für die Großen (zum Vergrößern klicken)" loading="lazy" />
+                <span>Atelier für die Großen</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- LIGHTBOX (Grundrisse groß, durchklickbar) -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Grundriss-Ansicht">
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Bildansicht">
     <div class="lightbox-inhalt">
       <button class="lightbox-close" id="lightboxClose" aria-label="Schließen">✕</button>
-      <button class="lightbox-btn prev" id="lightboxPrev" aria-label="Vorheriger Grundriss">←</button>
+      <button class="lightbox-btn prev" id="lightboxPrev" aria-label="Vorheriges Bild">←</button>
       <img src="" alt="" id="lightboxImg" />
-      <button class="lightbox-btn next" id="lightboxNext" aria-label="Nächster Grundriss">→</button>
+      <button class="lightbox-btn next" id="lightboxNext" aria-label="Nächstes Bild">→</button>
       <p class="lightbox-caption" id="lightboxCaption"></p>
     </div>
   </div>
@@ -648,8 +741,7 @@
           </div>
         </div>
         <div class="person">
-          <!-- Foto von Cora wird nachgereicht -->
-          <div class="ph" aria-hidden="true">CH</div>
+          <img src="assets/img/cora.jpg" alt="Cora Hanquet" />
           <div>
             <h3>Cora Hanquet</h3>
             <p>Gestalterin für Arbeits- und Möglichkeitsräume, systemische Beraterin.</p>
@@ -707,7 +799,8 @@
       <div>
         <img src="assets/logo/logo-weiss-crop.png" alt="Raum3 – Raum der Möglichkeiten" class="foot-logo" />
         <p class="foot-addr" style="margin-top:1rem">
-          Raum3 — Cora Hanquet &amp; Gwendolyn Rothstein GbR i.&nbsp;G.<br>
+          Raum3 GbR<br>
+          Gesellschafterinnen: Cora Hanquet &amp; Gwendolyn Rothstein<br>
           Nikolausstraße 3–5, 51429 Bergisch Gladbach<br>
           hallo@raum3-bensberg.de
         </p>
@@ -789,6 +882,16 @@
     meeting: [
       {src:'assets/img/grundriss-meetingraum.png',  titel:'Meetingraum',  bereich:'Coaching-/Meetingraum'},
       {src:'assets/img/grundriss-coachingraum.png', titel:'Coachingraum', bereich:'Coaching-/Meetingraum'}
+    ],
+    natur: [
+      {src:'assets/img/programm-natur-kreativwerkstatt.jpg', titel:'Natur- und Kreativwerkstatt', bereich:'Programm'},
+      {src:'assets/img/programm-kraeuterkinder.png',         titel:'Kräuterkinder',               bereich:'Natur- & Kreativwerkstatt'},
+      {src:'assets/img/programm-wild-kreativ.png',           titel:'Wild & Kreativ',              bereich:'Natur- & Kreativwerkstatt'}
+    ],
+    ateliers: [
+      {src:'assets/img/programm-ateliers-workshops.jpg', titel:'Ateliers & Workshops',    bereich:'Programm'},
+      {src:'assets/img/programm-kinderatelier.png',      titel:'Kinderatelier',           bereich:'Ateliers & Workshops'},
+      {src:'assets/img/programm-atelier-grosse.png',     titel:'Atelier für die Großen',  bereich:'Ateliers & Workshops'}
     ]
   };
   const lightbox = document.getElementById('lightbox');
@@ -801,7 +904,7 @@
     lbIdx = (i + g.length) % g.length;
     const p = g[lbIdx];
     lbImg.src = p.src;
-    lbImg.alt = 'Grundriss: ' + p.titel;
+    lbImg.alt = p.titel + ' — ' + p.bereich;
     lbCaption.innerHTML = p.titel + '<small>' + p.bereich + ' · ' + (lbIdx+1) + ' / ' + g.length + '</small>';
   }
   function oeffneLightbox(gruppe, i, ausloeser){
@@ -817,7 +920,7 @@
     document.body.style.overflow = '';
     if(lbLetzterFokus) lbLetzterFokus.focus();
   }
-  document.querySelectorAll('.plan-thumb').forEach(btn=>{
+  document.querySelectorAll('.plan-thumb, .prog-thumb').forEach(btn=>{
     btn.addEventListener('click', ()=>oeffneLightbox(btn.dataset.gruppe, +btn.dataset.i, btn));
   });
   document.getElementById('lightboxPrev').addEventListener('click', ()=>zeigePlan(lbIdx-1));
